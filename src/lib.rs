@@ -11,7 +11,7 @@ mod crypto;
 
 #[cfg(feature = "crypto")]
 pub use crypto::{
-    es256::Es256, es256k::Es256k, AlgoSignature, Algorithm, SigningKey, VerifyingKey,
+    es256::Es256, es256k::Es256k, rs256::Rs256, AlgoSignature, Algorithm, SigningKey, VerifyingKey,
 };
 #[cfg(feature = "crypto")]
 pub mod procs;
@@ -24,6 +24,12 @@ pub enum Error {
     CryptoError(#[from] ecdsa::Error),
     #[error("signature error: `{0}`")]
     P256Error(#[from] p256::elliptic_curve::Error),
+    #[error("RSA error: `{0}`")]
+    RsaError(#[from] rsa::Error),
+    #[error("RSA PKCS#1 error: `{0}`")]
+    RsaPkcs1Error(#[from] rsa::pkcs1::Error),
+    #[error("RSA key must be at least 2048 bits")]
+    RsaKeyTooSmall,
 }
 
 // crypto result type.
