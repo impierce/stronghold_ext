@@ -1,11 +1,16 @@
-#[cfg(feature = "crypto")]
+// The multi-key snapshot needs both EC algorithms; the RS256 section below is additive.
+#[cfg(all(feature = "es256", feature = "es256k"))]
 mod snapshot_test {
     use iota_stronghold::{KeyProvider, Location, SnapshotPath, Stronghold};
+    #[cfg(feature = "rs256")]
+    use rsa::traits::PublicKeyParts;
     use stronghold_ext::{
         execute_procedure_chained_ext, execute_procedure_ext,
         procs::{es256::Es256Procs, es256k::Es256kProcs, *},
         Algorithm, Es256, Es256k, VerifyingKey,
     };
+    #[cfg(feature = "rs256")]
+    use stronghold_ext::{procs::rs256::Rs256Procs, AlgoSignature, Rs256, RS256_MINIMUM_BITS};
 
     static STRONGHOLD_CLIENT_PATH: &[u8] = b"iota_identity_client";
 
@@ -39,6 +44,20 @@ mod snapshot_test {
 
         // create es256 secret key and put it into the stronghold vault.
         let _ = execute_procedure_ext(&client, gen_key).unwrap();
+
+        // RS256 private keys are ~1.2 KB of variable-length PKCS#1 DER rather than a fixed
+        // 32-byte scalar, so they exercise the vault's storage differently to the EC keys.
+        #[cfg(feature = "rs256")]
+        let rs256_loc: Location =
+            Location::generic(b"iota_identity_vault".to_vec(), b"key-3".to_vec());
+
+        #[cfg(feature = "rs256")]
+        {
+            let gen_key = Rs256Procs::GenerateKey(rs256::GenerateKey {
+                output: rs256_loc.clone(),
+            });
+            let _ = execute_procedure_ext(&client, gen_key).unwrap();
+        }
 
         // Set the work factor to 10 to speed up the commit.
         engine::snapshot::try_set_encrypt_work_factor(10).unwrap();
@@ -130,5 +149,45 @@ mod snapshot_test {
             .unwrap();
 
         assert_eq!(res[0], 1);
+
+        #[cfg(feature = "rs256")]
+        {
+            let pub_key = Rs256Procs::PublicKey(rs256::PublicKey {
+                private_key: rs256_loc.clone(),
+            });
+
+            let sign = Rs256Procs::Sign(rs256::Sign {
+                msg: b"test".to_vec(),
+                private_key: rs256_loc.clone(),
+            });
+
+            let res = execute_procedure_chained_ext(&client, vec![pub_key, sign]).unwrap();
+
+            let pk: Vec<u8> = res[0].clone().into();
+            let sig: Vec<u8> = res[1].clone().into();
+
+            // The key survived the snapshot round trip intact: it still decodes, is still the
+            // advertised size, and still verifies what it signed after reloading.
+            let vk = <Rs256 as Algorithm>::VerifyingKey::from_slice(&pk)
+                .expect("rs256 public key did not survive the snapshot round trip");
+            assert_eq!(vk.n().bits(), RS256_MINIMUM_BITS);
+            assert_eq!(sig.len(), vk.size());
+
+            let parsed = <Rs256 as Algorithm>::Signature::try_from_slice(&sig).unwrap();
+            assert!(Rs256.verify_signature(&parsed, &vk, b"test"));
+
+            let verify = Rs256Procs::Verify(rs256::Verify {
+                msg: b"test".to_vec(),
+                signature: sig,
+                private_key: rs256_loc.clone(),
+            });
+
+            let res: [u8; 1] = execute_procedure_ext(&client, verify)
+                .unwrap()
+                .try_into()
+                .unwrap();
+
+            assert_eq!(res[0], 1);
+        }
     }
 }
