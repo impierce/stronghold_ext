@@ -1,4 +1,4 @@
-#[cfg(feature = "crypto")]
+#[cfg(feature = "es256")]
 mod es256_test {
     use ecdsa::signature::hazmat::PrehashVerifier;
 

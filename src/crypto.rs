@@ -1,7 +1,10 @@
 use std::{borrow::Cow, num::NonZeroUsize};
 
+#[cfg(feature = "es256")]
 pub mod es256;
+#[cfg(feature = "es256k")]
 pub mod es256k;
+#[cfg(feature = "rs256")]
 pub mod rs256;
 
 ///  A trait for interfacing with cryptographic signatures.  

@@ -5,13 +5,20 @@ edition = "2021"
 authors = ["<Tensor>", "<tensordeveloper@gmail.com>"]
 
 [features]
-default = ["crypto"]
-crypto = [
-    "dep:p256",
-    "dep:k256",
-    "dep:rsa",
-    "dep:ecdsa",
+# RS256 is deliberately not a default: it pulls in the `rsa` crate, which carries
+# RUSTSEC-2023-0071 (Marvin attack) with no patched release available. Consumers
+# that only need the EC algorithms should not inherit that advisory, so RS256 is
+# opt-in via `features = ["rs256"]`.
+default = ["es256", "es256k"]
+
+es256 = ["_crypto_base", "dep:p256", "dep:ecdsa"]
+es256k = ["_crypto_base", "dep:k256", "dep:ecdsa"]
+rs256 = ["_crypto_base", "dep:rsa"]
+
+# Internal: machinery shared by every algorithm. Not meant to be enabled directly.
+_crypto_base = [
     "dep:rand",
+    "dep:signature",
     "dep:sha2",
     "dep:stronghold-utils",
     "dep:stronghold_engine",
@@ -29,6 +36,7 @@ p256 = { version = "0.13", optional = true, features = ["ecdsa"] }
 k256 = { version = "0.13", optional = true, features = ["ecdsa"] }
 rsa = { version = "0.9", optional = true, features = ["sha2"] }
 ecdsa = { version = "0.16", optional = true }
+signature = { version = "2", optional = true }
 rand = { version = "0.8", optional = true }
 sha2 = { version = "0.10", optional = true }
 zeroize = { version = "1.5.7", default-features = false, features = [
@@ -36,5 +44,6 @@ zeroize = { version = "1.5.7", default-features = false, features = [
 ], optional = true }
 serde = { version = "1.0", features = ["derive"], optional = true }
 
-[dev_dependencies]
+[dev-dependencies]
 hex = "0.4"
+stronghold_ext = { path = ".", default-features = false, features = ["rs256"] }

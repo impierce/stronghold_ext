@@ -1,4 +1,4 @@
-#[cfg(feature = "crypto")]
+#[cfg(feature = "es256k")]
 mod es256k_test {
 
     use ecdsa::signature::DigestSigner;

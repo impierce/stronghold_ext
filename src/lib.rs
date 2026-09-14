@@ -1,39 +1,53 @@
 // This is a library that extends the iota_stronghold library to allow user-defined cryptographic algorithms.
-// This library also includes its own implementations of the es256 and es256k algorithms.
+// This library also includes its own implementations of the es256, es256k and rs256 algorithms.
 mod ext;
 pub use ext::{execute_procedure_chained_ext, execute_procedure_ext, ProcedureExt};
 
-#[cfg(feature = "crypto")]
+#[cfg(feature = "_crypto_base")]
 use thiserror::Error as DeriveError;
 
-#[cfg(feature = "crypto")]
+#[cfg(feature = "_crypto_base")]
 mod crypto;
 
-#[cfg(feature = "crypto")]
-pub use crypto::{
-    es256::Es256, es256k::Es256k, rs256::Rs256, AlgoSignature, Algorithm, SigningKey, VerifyingKey,
-};
-#[cfg(feature = "crypto")]
+#[cfg(feature = "_crypto_base")]
+pub use crypto::{AlgoSignature, Algorithm, SigningKey, VerifyingKey};
+
+#[cfg(feature = "es256")]
+pub use crypto::es256::Es256;
+#[cfg(feature = "es256k")]
+pub use crypto::es256k::Es256k;
+#[cfg(feature = "rs256")]
+pub use crypto::rs256::{Rs256, RS256_MINIMUM_BITS};
+
+#[cfg(feature = "_crypto_base")]
 pub mod procs;
 
 // Error types for the crypto module.
-#[cfg(feature = "crypto")]
+//
+// Marked `#[non_exhaustive]` so that adding an algorithm (and therefore a new
+// error variant) is not a breaking change for downstream exhaustive matches.
+#[cfg(feature = "_crypto_base")]
 #[derive(Debug, DeriveError)]
+#[non_exhaustive]
 pub enum Error {
     #[error("signature error: `{0}`")]
-    CryptoError(#[from] ecdsa::Error),
+    CryptoError(#[from] signature::Error),
+    #[cfg(feature = "es256")]
     #[error("signature error: `{0}`")]
     P256Error(#[from] p256::elliptic_curve::Error),
+    #[cfg(feature = "rs256")]
     #[error("RSA error: `{0}`")]
     RsaError(#[from] rsa::Error),
+    #[cfg(feature = "rs256")]
     #[error("RSA PKCS#1 error: `{0}`")]
     RsaPkcs1Error(#[from] rsa::pkcs1::Error),
-    #[error("RSA key must be at least 2048 bits")]
+    #[cfg(feature = "rs256")]
+    #[error("RSA key must be at least {RS256_MINIMUM_BITS} bits")]
     RsaKeyTooSmall,
 }
 
 // crypto result type.
-#[cfg(feature = "crypto")]
+#[cfg(feature = "_crypto_base")]
 pub type Result<T> = core::result::Result<T, Error>;
 
 #[macro_export]
