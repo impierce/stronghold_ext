@@ -1,12 +1,12 @@
 #[cfg(feature = "rs256")]
 mod rs256_test {
     use iota_stronghold::{Location, Stronghold};
+    use rsa::sha2::{Digest, Sha256};
     use rsa::{
         pkcs1::{EncodeRsaPrivateKey, EncodeRsaPublicKey},
         traits::PublicKeyParts,
         BigUint, RsaPrivateKey, RsaPublicKey,
     };
-    use sha2::{Digest, Sha256};
     use stronghold_ext::{
         execute_procedure_chained_ext, execute_procedure_ext, procs::rs256, AlgoSignature,
         Algorithm, Rs256, SigningKey, VerifyingKey, RS256_MINIMUM_BITS,
