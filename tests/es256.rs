@@ -1,4 +1,6 @@
 #[cfg(feature = "es256")]
+// Names follow the fields of the NIST CAVP test vectors.
+#[allow(non_snake_case)]
 mod es256_test {
     use ecdsa::signature::hazmat::PrehashVerifier;
 
@@ -7,6 +9,8 @@ mod es256_test {
     use sha2::{Digest, Sha256};
     use stronghold_ext::{Algorithm, Es256, VerifyingKey};
 
+    // `k` (the nonce of the vector) is not needed: signatures are deterministic (RFC 6979).
+    #[allow(dead_code)]
     struct TestVector {
         Msg: &'static str,
         d: &'static str,
@@ -68,7 +72,7 @@ mod es256_test {
 
             assert_eq!(kpair_0, kpair);
 
-            let sig0 = kpair.sign_digest(|digest: &mut Sha256| digest.update(&z));
+            let sig0 = kpair.sign_digest(|digest: &mut Sha256| digest.update(z));
 
             let sig = Es256.sign(&kpair_0, &z);
 
@@ -78,7 +82,7 @@ mod es256_test {
 
             let res0 = q.verify_digest(
                 |digest: &mut Sha256| {
-                    digest.update(&z);
+                    digest.update(z);
                     Ok(())
                 },
                 &sig,

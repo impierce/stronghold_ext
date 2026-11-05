@@ -1,4 +1,6 @@
 #[cfg(feature = "es256k")]
+// `R` and `S` follow the usual names of the signature scalars.
+#[allow(non_snake_case)]
 mod es256k_test {
 
     use ecdsa::signature::DigestSigner;
@@ -60,7 +62,7 @@ mod es256k_test {
         assert_eq!(kpair_0, kpair);
 
         // sign the message with the private key.
-        let sig0 = kpair.sign_digest(|digest: &mut Sha256| digest.update(&z));
+        let sig0 = kpair.sign_digest(|digest: &mut Sha256| digest.update(z));
 
         let sig = Es256k::default().sign(&kpair_0, &z);
 

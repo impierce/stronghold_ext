@@ -59,13 +59,8 @@ impl UseSecret<1> for PublicKey {
     type Output = Vec<u8>;
 
     fn use_secret(self, guard: [Buffer<u8>; 1]) -> Result<Self::Output, FatalProcedureError> {
-        let sk =
-            <Es256k as Algorithm>::SigningKey::from_slice(&guard[0].borrow()).map_err(|e| {
-                String::from(format!(
-                    "Es256k: Failed to get signing key from guard {:?}",
-                    e
-                ))
-            })?;
+        let sk = <Es256k as Algorithm>::SigningKey::from_slice(&guard[0].borrow())
+            .map_err(|e| format!("Es256k: Failed to get signing key from guard {:?}", e))?;
 
         let vk = sk.to_verifying_key();
 
@@ -81,13 +76,8 @@ impl UseSecret<1> for Sign {
     type Output = Vec<u8>;
 
     fn use_secret(self, guard: [Buffer<u8>; 1]) -> Result<Self::Output, FatalProcedureError> {
-        let sk =
-            <Es256k as Algorithm>::SigningKey::from_slice(&guard[0].borrow()).map_err(|e| {
-                String::from(format!(
-                    "Es256k: Failed to get signing key from guard {:?}",
-                    e
-                ))
-            })?;
+        let sk = <Es256k as Algorithm>::SigningKey::from_slice(&guard[0].borrow())
+            .map_err(|e| format!("Es256k: Failed to get signing key from guard {:?}", e))?;
 
         let sig = <Es256k as Algorithm>::sign(&Es256k::default(), &sk, &self.msg);
 
@@ -103,21 +93,11 @@ impl UseSecret<1> for Verify {
     type Output = Vec<u8>;
 
     fn use_secret(self, guard: [Buffer<u8>; 1]) -> Result<Self::Output, FatalProcedureError> {
-        let sk =
-            <Es256k as Algorithm>::SigningKey::from_slice(&guard[0].borrow()).map_err(|e| {
-                String::from(format!(
-                    "Es256k: Failed to get signing key from guard {:?}",
-                    e
-                ))
-            })?;
+        let sk = <Es256k as Algorithm>::SigningKey::from_slice(&guard[0].borrow())
+            .map_err(|e| format!("Es256k: Failed to get signing key from guard {:?}", e))?;
 
         let sig = <Es256k as Algorithm>::Signature::try_from_slice(self.signature.as_slice())
-            .map_err(|e| {
-                String::from(format!(
-                    "Es256k: Failed to get signature from vector {:?}",
-                    e
-                ))
-            })?;
+            .map_err(|e| format!("Es256k: Failed to get signature from vector {:?}", e))?;
 
         let vk = sk.to_verifying_key();
         let res = <Es256k as Algorithm>::verify_signature(&Es256k::default(), &sig, &vk, &self.msg);
