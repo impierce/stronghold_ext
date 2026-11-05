@@ -1,0 +1,276 @@
+ES256 curve=P-256
+ES256 signature-length=Some(64)
+ES256 key=rfc6979 secret=c9afa9d845ba75166b5c215767b1d6934e50c3db36e89b127b8a622b120f6721
+ES256 key=rfc6979 public=0360fed4ba255a9d31c961eb74c6356d68c049b8923b61fa6ce669622e60f29fb6
+ES256 key=rfc6979 public-roundtrip=0360fed4ba255a9d31c961eb74c6356d68c049b8923b61fa6ce669622e60f29fb6
+ES256 key=rfc6979 msg=empty signature=0338197042a13192bec427db63c8d2dece6a08dbcc3d5181a9983e62032b023098feda6c583d409233023308d3848aa21b64381d85ee6e1c090a5d11fb7be0c7
+ES256 key=rfc6979 msg=empty verify=true
+ES256 key=rfc6979 msg=empty verify-other-message=false
+ES256 key=rfc6979 msg=empty verify-flipped-s=true
+ES256 key=rfc6979 msg=empty verify-corrupted=false
+ES256 key=rfc6979 msg=sample signature=efd48b2aacb6a8fd1140dd9cd45e81d69d2c877b56aaf991c34d0ea84eaf3716f7cb1c942d657c41d436c7a1b6e29f65f3e900dbb9aff4064dc4ab2f843acda8
+ES256 key=rfc6979 msg=sample verify=true
+ES256 key=rfc6979 msg=sample verify-other-message=false
+ES256 key=rfc6979 msg=sample verify-flipped-s=true
+ES256 key=rfc6979 msg=sample verify-corrupted=false
+ES256 key=rfc6979 msg=test signature=f1abb023518351cd71d881567b1ea663ed3efcf6c5132b354f28d3b0b7d38367019f4113742a2b14bd25926b49c649155f267e60d3814b4c0cc84250e46f0083
+ES256 key=rfc6979 msg=test verify=true
+ES256 key=rfc6979 msg=test verify-other-message=false
+ES256 key=rfc6979 msg=test verify-flipped-s=true
+ES256 key=rfc6979 msg=test verify-corrupted=false
+ES256 key=rfc6979 msg=1024-bytes signature=2de860ad8fd2dc9cda12d10102dc4eb744c23fc37207ec2b0b00ca2e65d33c4b556b36ad92ec4dcdadd6f413c8716452697644ce6bbeae581140b4390eaeb0fb
+ES256 key=rfc6979 msg=1024-bytes verify=true
+ES256 key=rfc6979 msg=1024-bytes verify-other-message=false
+ES256 key=rfc6979 msg=1024-bytes verify-flipped-s=true
+ES256 key=rfc6979 msg=1024-bytes verify-corrupted=false
+ES256 key=one secret=0000000000000000000000000000000000000000000000000000000000000001
+ES256 key=one public=036b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c296
+ES256 key=one public-roundtrip=036b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c296
+ES256 key=one msg=empty signature=0e69cb117664cedd6734e80151eabd388de266533e163fbe8ea463065c0fd71ac284e67e0baf2cf8e07896a5c5f222cad11e35c997c18c59d79bdbad6881783c
+ES256 key=one msg=empty verify=true
+ES256 key=one msg=empty verify-other-message=false
+ES256 key=one msg=empty verify-flipped-s=true
+ES256 key=one msg=empty verify-corrupted=false
+ES256 key=one msg=sample signature=0466341174d59e93eb984c2a7c923a80ab99a9e91555bc73ebd8073d4c722121998f2b7bb63082e976215e6ae46344d66d2d4edea67d65d91595f21311df5030
+ES256 key=one msg=sample verify=true
+ES256 key=one msg=sample verify-other-message=false
+ES256 key=one msg=sample verify-flipped-s=true
+ES256 key=one msg=sample verify-corrupted=false
+ES256 key=one msg=test signature=7ecc900ec818b3d8cfdc18f45de25dc953e1b9ae1a07a0d9cf8bd3f3e2c4bc86260e32d3a286ac502a62645d23a139398a9fe82f05de8e2e672a051a7c9cff9b
+ES256 key=one msg=test verify=true
+ES256 key=one msg=test verify-other-message=false
+ES256 key=one msg=test verify-flipped-s=true
+ES256 key=one msg=test verify-corrupted=false
+ES256 key=one msg=1024-bytes signature=0ae8b0441fa11a16cbe51506cf6ca75ef998d393537a0d80c534d139f2ea470498b3dd2f5ecb3b5c07c90cc52cc5569441f2c63c603ecf5cf10b675f3661a42d
+ES256 key=one msg=1024-bytes verify=true
+ES256 key=one msg=1024-bytes verify-other-message=false
+ES256 key=one msg=1024-bytes verify-flipped-s=true
+ES256 key=one msg=1024-bytes verify-corrupted=false
+ES256 key=n-1 secret=ffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632550
+ES256 key=n-1 public=026b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c296
+ES256 key=n-1 public-roundtrip=026b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c296
+ES256 key=n-1 msg=empty signature=9a4460ec5a9484c194d61987c2d9bddb2ada0e708fdf51ae0fe5974d8580012dc3f2dbedc40a96ef521afd115ad45c3043e30d612fcdd411ec3833abd6715b4d
+ES256 key=n-1 msg=empty verify=true
+ES256 key=n-1 msg=empty verify-other-message=false
+ES256 key=n-1 msg=empty verify-flipped-s=true
+ES256 key=n-1 msg=empty verify-corrupted=false
+ES256 key=n-1 msg=sample signature=a2e09df104aafc802a50c6684f6db83355a0a2588585a778b311e7e6c7c600ceb783aa569666ddbb05d0a5b9ce18b2757b27e2f6a4b4b1a3e4b4ced21f4174b2
+ES256 key=n-1 msg=sample verify=true
+ES256 key=n-1 msg=sample verify-other-message=false
+ES256 key=n-1 msg=sample verify-flipped-s=true
+ES256 key=n-1 msg=sample verify-corrupted=false
+ES256 key=n-1 msg=test signature=2ce08f4caf567510c7507c24e916ed767f67724844e9152a05bd91284b6bc8ed073eefa8066f28e4e357f97b3e118fbaa32656bef04d78636a86c9e1d9288e67
+ES256 key=n-1 msg=test verify=true
+ES256 key=n-1 msg=test verify-other-message=false
+ES256 key=n-1 msg=test verify-flipped-s=true
+ES256 key=n-1 msg=test verify-corrupted=false
+ES256 key=n-1 msg=1024-bytes signature=6502febbdd7e60e95675b0ae913bf60e76a948cdcf6c3552107c1ae6fb9fc7166c609138c1acbfcfba911f41c191e6d1c4274f60af023cf8c99262dbff4c6744
+ES256 key=n-1 msg=1024-bytes verify=true
+ES256 key=n-1 msg=1024-bytes verify-other-message=false
+ES256 key=n-1 msg=1024-bytes verify-flipped-s=true
+ES256 key=n-1 msg=1024-bytes verify-corrupted=false
+ES256 signing-key=zero err
+ES256 signing-key=n err
+ES256 signing-key=n+1 err
+ES256 signing-key=all-ff err
+ES256 signing-key=31-bytes ok
+ES256 signing-key=31-bytes secret=0001010101010101010101010101010101010101010101010101010101010101
+ES256 signing-key=33-bytes err
+ES256 verifying-key=empty err
+ES256 verifying-key=identity err
+ES256 verifying-key=wrong-prefix ok
+ES256 verifying-key=wrong-prefix public=0360fed4ba255a9d31c961eb74c6356d68c049b8923b61fa6ce669622e60f29fb6
+ES256 verifying-key=other-parity ok
+ES256 verifying-key=other-parity public=0260fed4ba255a9d31c961eb74c6356d68c049b8923b61fa6ce669622e60f29fb6
+ES256 verifying-key=x-not-on-curve err
+ES256 verifying-key=truncated err
+ES256 verifying-key=hybrid-prefix-06 err
+ES256 signature=empty err
+ES256 signature=63-bytes err
+ES256 signature=65-bytes err
+ES256 signature=zero-r err
+ES256 signature=zero-s err
+ES256 signature=r=n err
+ES256 signature=s=n err
+ES256K curve=K-256
+ES256K signature-length=Some(64)
+ES256K key=rfc6979 secret=c9afa9d845ba75166b5c215767b1d6934e50c3db36e89b127b8a622b120f6721
+ES256K key=rfc6979 public=032c8c31fc9f990c6b55e3865a184a4ce50e09481f2eaeb3e60ec1cea13a6ae645
+ES256K key=rfc6979 public-roundtrip=032c8c31fc9f990c6b55e3865a184a4ce50e09481f2eaeb3e60ec1cea13a6ae645
+ES256K key=rfc6979 msg=empty signature=725f4086bb24a2617205d2594c7dd8644b1e3329b90144ba65cea39cc9bff45d2b5457da4e41448045d484fc5ef401e13ebe92e46f7d8620e855a7625fbec41a
+ES256K key=rfc6979 msg=empty verify=true
+ES256K key=rfc6979 msg=empty verify-other-message=false
+ES256K key=rfc6979 msg=empty verify-flipped-s=true
+ES256K key=rfc6979 msg=empty verify-corrupted=false
+ES256K key=rfc6979 msg=sample signature=432310e32cb80eb6503a26ce83cc165c783b870845fb8aad6d970889fcd7a6c8530128b6b81c548874a6305d93ed071ca6e05074d85863d4056ce89b02bfab69
+ES256K key=rfc6979 msg=sample verify=true
+ES256K key=rfc6979 msg=sample verify-other-message=false
+ES256K key=rfc6979 msg=sample verify-flipped-s=true
+ES256K key=rfc6979 msg=sample verify-corrupted=false
+ES256K key=rfc6979 msg=test signature=f2adcea7139057be6409855ee96d008e0e5b5f532333ec17448e26a36f47bcb2570c9d342779b40f513c0d75cbf93e3f3de7b01f6593f17bfc2ee87151414d64
+ES256K key=rfc6979 msg=test verify=true
+ES256K key=rfc6979 msg=test verify-other-message=false
+ES256K key=rfc6979 msg=test verify-flipped-s=true
+ES256K key=rfc6979 msg=test verify-corrupted=false
+ES256K key=rfc6979 msg=1024-bytes signature=ad3efcd6a49354849431ed1b52507396471d0ea7cda677827a3f36fce12e5b6030857fe2907e9db1c5d39b97c5a5b4a7103ba80a03c371e596202bf4183a391b
+ES256K key=rfc6979 msg=1024-bytes verify=true
+ES256K key=rfc6979 msg=1024-bytes verify-other-message=false
+ES256K key=rfc6979 msg=1024-bytes verify-flipped-s=true
+ES256K key=rfc6979 msg=1024-bytes verify-corrupted=false
+ES256K key=one secret=0000000000000000000000000000000000000000000000000000000000000001
+ES256K key=one public=0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798
+ES256K key=one public-roundtrip=0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798
+ES256K key=one msg=empty signature=77c8d336572f6f466055b5f70f433851f8f535f6c4fc71133a6cfd71079d03b70ed9f5eb8aa5b266abac35d416c3207e7a538bf5f37649727d7a9823b1069577
+ES256K key=one msg=empty verify=true
+ES256K key=one msg=empty verify-other-message=false
+ES256K key=one msg=empty verify-flipped-s=true
+ES256K key=one msg=empty verify-corrupted=false
+ES256K key=one msg=sample signature=58db657bcd631038bea07b4941172f0167aca98f12b55e3176bd1c35435d65013a78e73d8ff8ab554e13c10f6390d81a882f91945d6275493882676170b53a57
+ES256K key=one msg=sample verify=true
+ES256K key=one msg=sample verify-other-message=false
+ES256K key=one msg=sample verify-flipped-s=true
+ES256K key=one msg=sample verify-corrupted=false
+ES256K key=one msg=test signature=98df3aaed18d1299109e9732e3015f7e68e5d1fdead6924809b410d970a3b0ce3ef15987c6592379baad6392586a382d63952572632fcd951ae75e7471c144c6
+ES256K key=one msg=test verify=true
+ES256K key=one msg=test verify-other-message=false
+ES256K key=one msg=test verify-flipped-s=true
+ES256K key=one msg=test verify-corrupted=false
+ES256K key=one msg=1024-bytes signature=5dc57a29def27cadb6921357f712860cef65db36dc7e782b2c356bff73ea6d8540edac190194c64069aa945e859239c58a4f9298b13fca5cbc2f731a62673cf2
+ES256K key=one msg=1024-bytes verify=true
+ES256K key=one msg=1024-bytes verify-other-message=false
+ES256K key=one msg=1024-bytes verify-flipped-s=true
+ES256K key=one msg=1024-bytes verify-corrupted=false
+ES256K key=n-1 secret=fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364140
+ES256K key=n-1 public=0379be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798
+ES256K key=n-1 public-roundtrip=0379be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798
+ES256K key=n-1 msg=empty signature=ea045bf0962ecc4d5aa84c8e716c87c9d5f49fba8e1ff0300ab2631de3d83b4351270ec8105346fddf35da5958d99ff55a0c0f720d6ae7f3e3eadd40a9ccfe0e
+ES256K key=n-1 msg=empty verify=true
+ES256K key=n-1 msg=empty verify-other-message=false
+ES256K key=n-1 msg=empty verify-flipped-s=true
+ES256K key=n-1 msg=empty verify-corrupted=false
+ES256K key=n-1 msg=sample signature=cc7c4b3ead174e1dcc27848877adb23e41df74e365f5a8ac7106b930e061f0d227916deb83f42167970ab2efab2787323875d5e7fbb033dc1950ec2f4869fdba
+ES256K key=n-1 msg=sample verify=true
+ES256K key=n-1 msg=sample verify-other-message=false
+ES256K key=n-1 msg=sample verify-flipped-s=true
+ES256K key=n-1 msg=sample verify-corrupted=false
+ES256K key=n-1 msg=test signature=65b79d53819915fe61f7f57d82134a73386e3f7fd0c791232f26fc1b942991e1093a2c182134be3c4f39ac1f06ada089fcfcdd5d50f116bcfdc9e5e76e22a026
+ES256K key=n-1 msg=test verify=true
+ES256K key=n-1 msg=test verify-other-message=false
+ES256K key=n-1 msg=test verify-flipped-s=true
+ES256K key=n-1 msg=test verify-corrupted=false
+ES256K key=n-1 msg=1024-bytes signature=7f1dbe3a295132c41eb2d8fa16eae221de2d1faa52f5988ace463f34c53a5930111740e4833eab00b4aa3f0be3c9dc8a7bced4dc32c49207638f95d0f545be2f
+ES256K key=n-1 msg=1024-bytes verify=true
+ES256K key=n-1 msg=1024-bytes verify-other-message=false
+ES256K key=n-1 msg=1024-bytes verify-flipped-s=true
+ES256K key=n-1 msg=1024-bytes verify-corrupted=false
+ES256K signing-key=zero err
+ES256K signing-key=n err
+ES256K signing-key=n+1 err
+ES256K signing-key=all-ff err
+ES256K signing-key=31-bytes ok
+ES256K signing-key=31-bytes secret=0001010101010101010101010101010101010101010101010101010101010101
+ES256K signing-key=33-bytes err
+ES256K verifying-key=empty err
+ES256K verifying-key=identity err
+ES256K verifying-key=wrong-prefix ok
+ES256K verifying-key=wrong-prefix public=022c8c31fc9f990c6b55e3865a184a4ce50e09481f2eaeb3e60ec1cea13a6ae645
+ES256K verifying-key=other-parity ok
+ES256K verifying-key=other-parity public=022c8c31fc9f990c6b55e3865a184a4ce50e09481f2eaeb3e60ec1cea13a6ae645
+ES256K verifying-key=x-not-on-curve err
+ES256K verifying-key=truncated err
+ES256K verifying-key=hybrid-prefix-06 err
+ES256K signature=empty err
+ES256K signature=63-bytes err
+ES256K signature=65-bytes err
+ES256K signature=zero-r err
+ES256K signature=zero-s err
+ES256K signature=r=n err
+ES256K signature=s=n err
+ES256 proc key=rfc6979 public=0360fed4ba255a9d31c961eb74c6356d68c049b8923b61fa6ce669622e60f29fb6
+ES256 proc key=rfc6979 msg=empty signature=0338197042a13192bec427db63c8d2dece6a08dbcc3d5181a9983e62032b023098feda6c583d409233023308d3848aa21b64381d85ee6e1c090a5d11fb7be0c7
+ES256 proc key=rfc6979 msg=empty verify-valid=01
+ES256 proc key=rfc6979 msg=empty verify-corrupted=00
+ES256 proc key=rfc6979 msg=sample signature=efd48b2aacb6a8fd1140dd9cd45e81d69d2c877b56aaf991c34d0ea84eaf3716f7cb1c942d657c41d436c7a1b6e29f65f3e900dbb9aff4064dc4ab2f843acda8
+ES256 proc key=rfc6979 msg=sample verify-valid=01
+ES256 proc key=rfc6979 msg=sample verify-corrupted=00
+ES256 proc key=rfc6979 msg=test signature=f1abb023518351cd71d881567b1ea663ed3efcf6c5132b354f28d3b0b7d38367019f4113742a2b14bd25926b49c649155f267e60d3814b4c0cc84250e46f0083
+ES256 proc key=rfc6979 msg=test verify-valid=01
+ES256 proc key=rfc6979 msg=test verify-corrupted=00
+ES256 proc key=rfc6979 msg=1024-bytes signature=2de860ad8fd2dc9cda12d10102dc4eb744c23fc37207ec2b0b00ca2e65d33c4b556b36ad92ec4dcdadd6f413c8716452697644ce6bbeae581140b4390eaeb0fb
+ES256 proc key=rfc6979 msg=1024-bytes verify-valid=01
+ES256 proc key=rfc6979 msg=1024-bytes verify-corrupted=00
+ES256 proc key=rfc6979 verify-63-byte-signature=err
+ES256 proc key=one public=036b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c296
+ES256 proc key=one msg=empty signature=0e69cb117664cedd6734e80151eabd388de266533e163fbe8ea463065c0fd71ac284e67e0baf2cf8e07896a5c5f222cad11e35c997c18c59d79bdbad6881783c
+ES256 proc key=one msg=empty verify-valid=01
+ES256 proc key=one msg=empty verify-corrupted=00
+ES256 proc key=one msg=sample signature=0466341174d59e93eb984c2a7c923a80ab99a9e91555bc73ebd8073d4c722121998f2b7bb63082e976215e6ae46344d66d2d4edea67d65d91595f21311df5030
+ES256 proc key=one msg=sample verify-valid=01
+ES256 proc key=one msg=sample verify-corrupted=00
+ES256 proc key=one msg=test signature=7ecc900ec818b3d8cfdc18f45de25dc953e1b9ae1a07a0d9cf8bd3f3e2c4bc86260e32d3a286ac502a62645d23a139398a9fe82f05de8e2e672a051a7c9cff9b
+ES256 proc key=one msg=test verify-valid=01
+ES256 proc key=one msg=test verify-corrupted=00
+ES256 proc key=one msg=1024-bytes signature=0ae8b0441fa11a16cbe51506cf6ca75ef998d393537a0d80c534d139f2ea470498b3dd2f5ecb3b5c07c90cc52cc5569441f2c63c603ecf5cf10b675f3661a42d
+ES256 proc key=one msg=1024-bytes verify-valid=01
+ES256 proc key=one msg=1024-bytes verify-corrupted=00
+ES256 proc key=one verify-63-byte-signature=err
+ES256 proc key=n-1 public=026b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c296
+ES256 proc key=n-1 msg=empty signature=9a4460ec5a9484c194d61987c2d9bddb2ada0e708fdf51ae0fe5974d8580012dc3f2dbedc40a96ef521afd115ad45c3043e30d612fcdd411ec3833abd6715b4d
+ES256 proc key=n-1 msg=empty verify-valid=01
+ES256 proc key=n-1 msg=empty verify-corrupted=00
+ES256 proc key=n-1 msg=sample signature=a2e09df104aafc802a50c6684f6db83355a0a2588585a778b311e7e6c7c600ceb783aa569666ddbb05d0a5b9ce18b2757b27e2f6a4b4b1a3e4b4ced21f4174b2
+ES256 proc key=n-1 msg=sample verify-valid=01
+ES256 proc key=n-1 msg=sample verify-corrupted=00
+ES256 proc key=n-1 msg=test signature=2ce08f4caf567510c7507c24e916ed767f67724844e9152a05bd91284b6bc8ed073eefa8066f28e4e357f97b3e118fbaa32656bef04d78636a86c9e1d9288e67
+ES256 proc key=n-1 msg=test verify-valid=01
+ES256 proc key=n-1 msg=test verify-corrupted=00
+ES256 proc key=n-1 msg=1024-bytes signature=6502febbdd7e60e95675b0ae913bf60e76a948cdcf6c3552107c1ae6fb9fc7166c609138c1acbfcfba911f41c191e6d1c4274f60af023cf8c99262dbff4c6744
+ES256 proc key=n-1 msg=1024-bytes verify-valid=01
+ES256 proc key=n-1 msg=1024-bytes verify-corrupted=00
+ES256 proc key=n-1 verify-63-byte-signature=err
+ES256 proc invalid-key public=err
+ES256 proc invalid-key sign=err
+ES256K proc key=rfc6979 public=032c8c31fc9f990c6b55e3865a184a4ce50e09481f2eaeb3e60ec1cea13a6ae645
+ES256K proc key=rfc6979 msg=empty signature=725f4086bb24a2617205d2594c7dd8644b1e3329b90144ba65cea39cc9bff45d2b5457da4e41448045d484fc5ef401e13ebe92e46f7d8620e855a7625fbec41a
+ES256K proc key=rfc6979 msg=empty verify-valid=01
+ES256K proc key=rfc6979 msg=empty verify-corrupted=00
+ES256K proc key=rfc6979 msg=sample signature=432310e32cb80eb6503a26ce83cc165c783b870845fb8aad6d970889fcd7a6c8530128b6b81c548874a6305d93ed071ca6e05074d85863d4056ce89b02bfab69
+ES256K proc key=rfc6979 msg=sample verify-valid=01
+ES256K proc key=rfc6979 msg=sample verify-corrupted=00
+ES256K proc key=rfc6979 msg=test signature=f2adcea7139057be6409855ee96d008e0e5b5f532333ec17448e26a36f47bcb2570c9d342779b40f513c0d75cbf93e3f3de7b01f6593f17bfc2ee87151414d64
+ES256K proc key=rfc6979 msg=test verify-valid=01
+ES256K proc key=rfc6979 msg=test verify-corrupted=00
+ES256K proc key=rfc6979 msg=1024-bytes signature=ad3efcd6a49354849431ed1b52507396471d0ea7cda677827a3f36fce12e5b6030857fe2907e9db1c5d39b97c5a5b4a7103ba80a03c371e596202bf4183a391b
+ES256K proc key=rfc6979 msg=1024-bytes verify-valid=01
+ES256K proc key=rfc6979 msg=1024-bytes verify-corrupted=00
+ES256K proc key=rfc6979 verify-63-byte-signature=err
+ES256K proc key=one public=0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798
+ES256K proc key=one msg=empty signature=77c8d336572f6f466055b5f70f433851f8f535f6c4fc71133a6cfd71079d03b70ed9f5eb8aa5b266abac35d416c3207e7a538bf5f37649727d7a9823b1069577
+ES256K proc key=one msg=empty verify-valid=01
+ES256K proc key=one msg=empty verify-corrupted=00
+ES256K proc key=one msg=sample signature=58db657bcd631038bea07b4941172f0167aca98f12b55e3176bd1c35435d65013a78e73d8ff8ab554e13c10f6390d81a882f91945d6275493882676170b53a57
+ES256K proc key=one msg=sample verify-valid=01
+ES256K proc key=one msg=sample verify-corrupted=00
+ES256K proc key=one msg=test signature=98df3aaed18d1299109e9732e3015f7e68e5d1fdead6924809b410d970a3b0ce3ef15987c6592379baad6392586a382d63952572632fcd951ae75e7471c144c6
+ES256K proc key=one msg=test verify-valid=01
+ES256K proc key=one msg=test verify-corrupted=00
+ES256K proc key=one msg=1024-bytes signature=5dc57a29def27cadb6921357f712860cef65db36dc7e782b2c356bff73ea6d8540edac190194c64069aa945e859239c58a4f9298b13fca5cbc2f731a62673cf2
+ES256K proc key=one msg=1024-bytes verify-valid=01
+ES256K proc key=one msg=1024-bytes verify-corrupted=00
+ES256K proc key=one verify-63-byte-signature=err
+ES256K proc key=n-1 public=0379be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798
+ES256K proc key=n-1 msg=empty signature=ea045bf0962ecc4d5aa84c8e716c87c9d5f49fba8e1ff0300ab2631de3d83b4351270ec8105346fddf35da5958d99ff55a0c0f720d6ae7f3e3eadd40a9ccfe0e
+ES256K proc key=n-1 msg=empty verify-valid=01
+ES256K proc key=n-1 msg=empty verify-corrupted=00
+ES256K proc key=n-1 msg=sample signature=cc7c4b3ead174e1dcc27848877adb23e41df74e365f5a8ac7106b930e061f0d227916deb83f42167970ab2efab2787323875d5e7fbb033dc1950ec2f4869fdba
+ES256K proc key=n-1 msg=sample verify-valid=01
+ES256K proc key=n-1 msg=sample verify-corrupted=00
+ES256K proc key=n-1 msg=test signature=65b79d53819915fe61f7f57d82134a73386e3f7fd0c791232f26fc1b942991e1093a2c182134be3c4f39ac1f06ada089fcfcdd5d50f116bcfdc9e5e76e22a026
+ES256K proc key=n-1 msg=test verify-valid=01
+ES256K proc key=n-1 msg=test verify-corrupted=00
+ES256K proc key=n-1 msg=1024-bytes signature=7f1dbe3a295132c41eb2d8fa16eae221de2d1faa52f5988ace463f34c53a5930111740e4833eab00b4aa3f0be3c9dc8a7bced4dc32c49207638f95d0f545be2f
+ES256K proc key=n-1 msg=1024-bytes verify-valid=01
+ES256K proc key=n-1 msg=1024-bytes verify-corrupted=00
+ES256K proc key=n-1 verify-63-byte-signature=err
+ES256K proc invalid-key public=err
+ES256K proc invalid-key sign=err
