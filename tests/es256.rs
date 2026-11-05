@@ -44,12 +44,12 @@ mod es256_test {
             let vk = <Es256 as Algorithm>::VerifyingKey::from_slice(&key_bytes).unwrap();
 
             // build uncompressed public key from x and y encoded points.
-            let q_encoded = ecdsa::EncodedPoint::<p256::NistP256>::from_affine_coordinates(
-                qx.as_slice().into(),
-                qy.as_slice().into(),
+            let q_encoded = ecdsa::Sec1Point::<p256::NistP256>::from_affine_coordinates(
+                &p256::FieldBytes::try_from(qx.as_slice()).unwrap(),
+                &p256::FieldBytes::try_from(qy.as_slice()).unwrap(),
                 false,
             );
-            let q = ecdsa::VerifyingKey::<p256::NistP256>::from_encoded_point(&q_encoded).unwrap();
+            let q = ecdsa::VerifyingKey::<p256::NistP256>::from_sec1_point(&q_encoded).unwrap();
 
             assert_eq!(q, vk);
 
@@ -60,17 +60,15 @@ mod es256_test {
 
             assert!(res.is_ok());
 
-            let z = p256::FieldBytes::from_slice(&msg);
-            let d = p256::FieldBytes::from_slice(&d);
+            let z = p256::FieldBytes::try_from(msg.as_slice()).unwrap();
+            let d = p256::FieldBytes::try_from(d.as_slice()).unwrap();
 
-            let kpair = ecdsa::SigningKey::<p256::NistP256>::from_bytes(d).unwrap();
-            let kpair_0 = <Es256 as Algorithm>::SigningKey::from_slice(d).unwrap();
+            let kpair = ecdsa::SigningKey::<p256::NistP256>::from_bytes(&d).unwrap();
+            let kpair_0 = <Es256 as Algorithm>::SigningKey::from_slice(&d).unwrap();
 
             assert_eq!(kpair_0, kpair);
 
-            let mut digest = Sha256::default();
-            digest.update(&z);
-            let sig0 = kpair.sign_digest(digest);
+            let sig0 = kpair.sign_digest(|digest: &mut Sha256| digest.update(&z));
 
             let sig = Es256.sign(&kpair_0, &z);
 
@@ -78,9 +76,13 @@ mod es256_test {
 
             let res = Es256.verify_signature(&sig, &vk, &z);
 
-            let mut digest = Sha256::default();
-            digest.update(&z);
-            let res0 = q.verify_digest(digest, &sig);
+            let res0 = q.verify_digest(
+                |digest: &mut Sha256| {
+                    digest.update(&z);
+                    Ok(())
+                },
+                &sig,
+            );
 
             assert!(res);
             assert!(res0.is_ok());

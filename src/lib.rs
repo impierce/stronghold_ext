@@ -30,11 +30,15 @@ pub mod procs;
 #[derive(Debug, DeriveError)]
 #[non_exhaustive]
 pub enum Error {
+    #[cfg(any(feature = "es256", feature = "es256k"))]
     #[error("signature error: `{0}`")]
     CryptoError(#[from] signature::Error),
     #[cfg(feature = "es256")]
     #[error("signature error: `{0}`")]
     P256Error(#[from] p256::elliptic_curve::Error),
+    #[cfg(feature = "rs256")]
+    #[error("RSA signature error: `{0}`")]
+    RsaSignatureError(#[from] rsa::signature::Error),
     #[cfg(feature = "rs256")]
     #[error("RSA error: `{0}`")]
     RsaError(#[from] rsa::Error),
