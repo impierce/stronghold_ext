@@ -3,7 +3,7 @@ use k256::{
         signature::{DigestSigner, DigestVerifier},
         Signature, SigningKey, VerifyingKey,
     },
-    elliptic_curve::FieldBytesSize,
+    elliptic_curve::{FieldBytesSize, Generate},
     Secp256k1,
 };
 use sha2::{digest::typenum::Unsigned, Digest, Sha256};
@@ -62,15 +62,13 @@ where
     }
 
     fn generate_signing_key(&self) -> Self::SigningKey {
-        Self::SigningKey::random(&mut rand::thread_rng())
+        Self::SigningKey::generate()
     }
 
     /// Signs a message with a `SigningKey` (private key) and returns a `Signature`.
     /// Using Sha256 as the digest to hash the message before signing as per the es256k spec.
     fn sign(&self, signing_key: &Self::SigningKey, message: &[u8]) -> Self::Signature {
-        let mut digest = Sha256::default();
-        digest.update(message);
-        signing_key.sign_digest(digest)
+        signing_key.sign_digest(|digest: &mut Sha256| digest.update(message))
     }
 
     /// Verifies a signature given a message and a `VerifyingKey`.
@@ -81,20 +79,20 @@ where
         verifying_key: &Self::VerifyingKey,
         message: &[u8],
     ) -> bool {
-        let mut digest = Sha256::default();
-        digest.update(message);
-
         // Some implementations (e.g., OpenSSL) produce high-S signatures, which
         // are considered invalid by this implementation. Hence, we perform normalization here.
         //
         // See also: https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki
-        let mut normalized_signature = *signature;
-        if let Some(new_signature) = normalized_signature.normalize_s() {
-            normalized_signature = new_signature;
-        }
+        let normalized_signature = signature.normalize_s();
 
         verifying_key
-            .verify_digest(digest, &normalized_signature)
+            .verify_digest(
+                |digest: &mut Sha256| {
+                    digest.update(message);
+                    Ok(())
+                },
+                &normalized_signature,
+            )
             .is_ok()
     }
 }
@@ -126,7 +124,7 @@ impl VKey<Es256k> for VerifyingKey {
     ///
     /// Should maybe expose the ability to change whether or not the key is compressed.
     fn as_bytes(&self) -> Cow<'_, [u8]> {
-        let bytes = self.to_encoded_point(true).as_bytes().to_vec();
+        let bytes = self.to_sec1_point(true).as_bytes().to_vec();
         Cow::Owned(bytes)
     }
 }

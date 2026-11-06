@@ -1,3 +1,4 @@
+use rsa::sha2::Sha256;
 use rsa::signature::{RandomizedSigner, SignatureEncoding, Verifier};
 use rsa::{
     pkcs1::{DecodeRsaPrivateKey, DecodeRsaPublicKey, EncodeRsaPrivateKey, EncodeRsaPublicKey},
@@ -5,7 +6,6 @@ use rsa::{
     traits::PublicKeyParts,
     RsaPrivateKey, RsaPublicKey,
 };
-use sha2::Sha256;
 use std::{borrow::Cow, num::NonZeroUsize};
 
 use crate::{AlgoSignature, Algorithm, SigningKey as SKey, VerifyingKey as VKey};

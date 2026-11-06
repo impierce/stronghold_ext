@@ -1,8 +1,11 @@
 use std::{borrow::Cow, num::NonZeroUsize};
 
-use p256::ecdsa::{
-    signature::{DigestSigner, DigestVerifier},
-    Signature, SigningKey, VerifyingKey,
+use p256::{
+    ecdsa::{
+        signature::{DigestSigner, DigestVerifier},
+        Signature, SigningKey, VerifyingKey,
+    },
+    elliptic_curve::Generate,
 };
 use sha2::{Digest, Sha256};
 
@@ -38,15 +41,13 @@ impl Algorithm for Es256 {
     }
 
     fn generate_signing_key(&self) -> Self::SigningKey {
-        Self::SigningKey::random(&mut rand::thread_rng())
+        Self::SigningKey::generate()
     }
 
     /// Signs a message with a `SigningKey` (private key) and returns a `Signature`.
     /// Using Sha256 as the digest to hash the message before signing as per the es256 spec.
     fn sign(&self, signing_key: &Self::SigningKey, message: &[u8]) -> Self::Signature {
-        let mut digest = Sha256::default();
-        digest.update(message);
-        signing_key.sign_digest(digest)
+        signing_key.sign_digest(|digest: &mut Sha256| digest.update(message))
     }
 
     /// Verifies a signature given a message and a `VerifyingKey`.
@@ -57,10 +58,15 @@ impl Algorithm for Es256 {
         verifying_key: &Self::VerifyingKey,
         message: &[u8],
     ) -> bool {
-        let mut digest = Sha256::default();
-        digest.update(message);
-
-        verifying_key.verify_digest(digest, signature).is_ok()
+        verifying_key
+            .verify_digest(
+                |digest: &mut Sha256| {
+                    digest.update(message);
+                    Ok(())
+                },
+                signature,
+            )
+            .is_ok()
     }
 }
 
@@ -91,7 +97,7 @@ impl VKey<Es256> for VerifyingKey {
     ///
     /// Should maybe expose the ability to change whether or not the key is compressed.
     fn as_bytes(&self) -> Cow<'_, [u8]> {
-        let bytes = self.to_encoded_point(true).as_bytes().to_vec();
+        let bytes = self.to_sec1_point(true).as_bytes().to_vec();
         Cow::Owned(bytes)
     }
 }

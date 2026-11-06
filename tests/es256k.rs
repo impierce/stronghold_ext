@@ -1,4 +1,6 @@
 #[cfg(feature = "es256k")]
+// `R` and `S` follow the usual names of the signature scalars.
+#[allow(non_snake_case)]
 mod es256k_test {
 
     use ecdsa::signature::DigestSigner;
@@ -39,20 +41,20 @@ mod es256k_test {
         let vk0 = <Es256k as Algorithm>::VerifyingKey::from_slice(&key_bytes).unwrap();
 
         // build uncompressed public key from x and y encoded points.
-        let q_encoded = ecdsa::EncodedPoint::<k256::Secp256k1>::from_affine_coordinates(
-            x.as_slice().into(),
-            y.as_slice().into(),
+        let q_encoded = ecdsa::Sec1Point::<k256::Secp256k1>::from_affine_coordinates(
+            &k256::FieldBytes::try_from(x.as_slice()).unwrap(),
+            &k256::FieldBytes::try_from(y.as_slice()).unwrap(),
             false,
         );
 
-        let vk1 = ecdsa::VerifyingKey::<k256::Secp256k1>::from_encoded_point(&q_encoded).unwrap();
+        let vk1 = ecdsa::VerifyingKey::<k256::Secp256k1>::from_sec1_point(&q_encoded).unwrap();
         // verify all of the public keys are the same.
         assert_eq!(vk, vk0);
         assert_eq!(vk, vk1);
 
-        let z = k256::FieldBytes::from_slice(&msg);
+        let z = k256::FieldBytes::try_from(msg.as_slice()).unwrap();
 
-        let d = k256::FieldBytes::from_slice(&d);
+        let d = k256::FieldBytes::try_from(d.as_slice()).unwrap();
         // create private keys from d.
         let kpair = ecdsa::SigningKey::<k256::Secp256k1>::from_bytes(&d).unwrap();
         let kpair_0 = <Es256k as Algorithm>::SigningKey::from_slice(&d).unwrap();
@@ -60,9 +62,7 @@ mod es256k_test {
         assert_eq!(kpair_0, kpair);
 
         // sign the message with the private key.
-        let mut digest = Sha256::default();
-        digest.update(&z);
-        let sig0 = kpair.sign_digest(digest);
+        let sig0 = kpair.sign_digest(|digest: &mut Sha256| digest.update(z));
 
         let sig = Es256k::default().sign(&kpair_0, &z);
 
